@@ -1,0 +1,7 @@
+{
+    "require": {
+        "guzzle/guzzle": "~3.7",
+        "components/jquery": "~2.1",
+        "twitter/bootstrap": "~3.1"
+    }
+}
