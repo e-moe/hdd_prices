@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1b3edf7cd8eb842ed181540efa327d55",
+    "hash": "dd5631f9a029f74f2a359fef84aa4139",
     "packages": [
         {
             "name": "components/jquery",

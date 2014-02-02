@@ -1,6 +1,10 @@
 <?php
 
-require dirname(__FILE__) . '/../classes/spider.php';
+require dirname(__FILE__) . '/../vendor/autoload.php';
 
-$spider = new Spider('http://hotline.ua/computer/zhestkie-diski', dirname(__FILE__) . '/../data/');
+use PriceParser\HotlineHddParser;
+use PriceParser\Spider;
+
+$parser = new HotlineHddParser();
+$spider = new Spider($parser, dirname(__FILE__) . '/../data/hdd/');
 $spider->run();
