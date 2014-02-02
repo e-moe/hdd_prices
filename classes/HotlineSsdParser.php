@@ -40,7 +40,8 @@ class HotlineSsdParser extends HotlineParser
             $hdd = new \stdClass();
             $hdd->type = trim($techCharArr[0]);
             $hdd->capacity = intval(preg_replace('/\D/u', '', $techCharArr[1]));
-            $hdd->interface = trim($techCharArr[2]);
+            $interfaceArr = preg_split('/:/u', $techCharArr[2]);
+            $hdd->interface = trim($interfaceArr[1]);
             $hdd->flashType = trim($techCharArr[3]);
 
             $titleUrlNodes = $xpath->query('.//div[@class="title-box"]/h3/a', $li);
