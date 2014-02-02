@@ -49,10 +49,9 @@ class HotlineSsdParser extends HotlineParser
             $hdd->url = self::HOST_URL . $titleUrlNodes->item(0)->attributes->getNamedItem("href")->nodeValue;
 
             $priceNodes = $xpath->query('.//div[@class="price"]/span', $li);
-            if (!$priceNodes->length) {
-                $hdd->price = (object)['avg' => null, 'min' => null, 'max' => null];
-                $hdd->ratio = (object)['avg' => null, 'min' => null, 'max' => null];
-            } else {
+            $hdd->price = (object)['avg' => null, 'min' => null, 'max' => null];
+            $hdd->ratio = (object)['avg' => null, 'min' => null, 'max' => null];
+            if ($priceNodes->length) {
                 if (preg_match('/([\d|\s]+)\D+(([\d|\s]+)\D+([\d|\s]+))?/u', $priceNodes->item(0)->nodeValue, $matches)) {
                     $priceArr = array_map(
                         function($v){
@@ -60,18 +59,14 @@ class HotlineSsdParser extends HotlineParser
                         },
                         $matches
                     );
-                    $price = new \stdClass();
-                    $k = new \stdClass();
-                    $price->avg = intval($priceArr[1]);
-                    $k->avg = round($price->avg / $hdd->capacity, 4);
+                    $hdd->price->avg = intval($priceArr[1]);
+                    $hdd->ratio->avg = round($hdd->price->avg / $hdd->capacity, 4);
                     if (count($priceArr) > 3) {
-                        $price->min = intval($priceArr[3]);
-                        $k->min = round($price->min / $hdd->capacity, 4);
-                        $price->max = intval($priceArr[4]);
-                        $k->max = round($price->max / $hdd->capacity, 4);
+                        $hdd->price->min = intval($priceArr[3]);
+                        $hdd->ratio->min = round($hdd->price->min / $hdd->capacity, 4);
+                        $hdd->price->max = intval($priceArr[4]);
+                        $hdd->ratio->max = round($hdd->price->max / $hdd->capacity, 4);
                     }
-                    $hdd->price = $price;
-                    $hdd->ratio = $k;
                 }
             }
             $this->items[] = $hdd;
