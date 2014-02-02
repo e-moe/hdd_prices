@@ -81,8 +81,8 @@ function drawTable($hdd)
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li><a href="/hdd">HDD</a></li>
-                            <li class="active"><a href="/ssd">SSD</a></li>
+                            <li><a href="/hdd/">HDD</a></li>
+                            <li class="active"><a href="/ssd/">SSD</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="http://github.com/e-moe/hdd_prices/"><span class="glyphicon glyphicon-file"></span> Github</a></li>
