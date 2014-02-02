@@ -113,6 +113,9 @@ class Spider
         return $hdd;
     }
 
+    /**
+     * Download all pages, parse and save data
+     */
     public function run()
     {
         $pageOne = $this->loadPage();

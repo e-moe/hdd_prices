@@ -28,6 +28,9 @@ abstract class PageParser
         return $this->html;
     }
     
+    /**
+     * Reset parser state
+     */
     protected function reset()
     {
         $this->html = '';
@@ -36,9 +39,16 @@ abstract class PageParser
         $this->pages = 0;
     }
 
+    /**
+     * Parse input html string
+     * 
+     * @param string $html
+     * @return boolean Result success
+     */
     public function parse($html)
     {
         $this->reset();
         $this->html = $html;
+        return true;
     }
 }

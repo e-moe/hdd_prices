@@ -10,6 +10,12 @@ class HotlineSsdParser extends HotlineParser
         parent::__construct(self::URL_PATH);
     }
 
+    /**
+     * Parse input html string
+     * 
+     * @param string $html
+     * @return boolean Result success
+     */
     public function parse($html)
     {
         parent::parse($html);
