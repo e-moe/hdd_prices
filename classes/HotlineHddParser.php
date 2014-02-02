@@ -50,7 +50,7 @@ class HotlineHddParser extends HotlineParser
             $priceNodes = $xpath->query('.//div[@class="price"]/span', $li);
             if (!$priceNodes->length) {
                 $hdd->price = (object)['avg' => null, 'min' => null, 'max' => null];
-                $hdd->k = (object)['avg' => null, 'min' => null, 'max' => null];
+                $hdd->ratio = (object)['avg' => null, 'min' => null, 'max' => null];
             } else {
                 if (preg_match('/([\d|\s]+)\D+(([\d|\s]+)\D+([\d|\s]+))?/u', $priceNodes->item(0)->nodeValue, $matches)) {
                     $priceArr = array_map(
@@ -70,7 +70,7 @@ class HotlineHddParser extends HotlineParser
                         $k->max = round($price->max / $hdd->capacity, 4);
                     }
                     $hdd->price = $price;
-                    $hdd->k = $k;
+                    $hdd->ratio = $k;
                 }
             }
             $this->items[] = $hdd;

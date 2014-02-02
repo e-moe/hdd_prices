@@ -8,7 +8,7 @@ function loadData($filename)
     $contents = file_get_contents($filename);
     $hdd = json_decode($contents);
     usort($hdd, function($a, $b) {
-        $diff = $a->k->avg - $b->k->avg;
+        $diff = $a->ratio->avg - $b->ratio->avg;
         if (abs($diff) < 0.0001) {
             return 0;
         }
@@ -27,7 +27,7 @@ function drawTable($hdd)
         }
     }
     echo '<table class="table table-condensed table-striped">';
-    echo '<thead><tr><th>#</th><th>Title</th><th>Interface</th><th>Capacity (GB)</th><th>Avg Price</th><th>Avg K</th></tr></thead>';
+    echo '<thead><tr><th>#</th><th>Title</th><th>Interface</th><th>Capacity (GB)</th><th>Avg Price</th><th>Ratio</th></tr></thead>';
     echo '<tbody>';
     foreach ($hdd as $id => $h): ?>
     <tr>
@@ -41,8 +41,8 @@ function drawTable($hdd)
             </span>
         </td>
         <td>
-            <span title="From <?= $h->k->min ?> to <?= $h->k->max ?>">
-                <?= $h->k->avg ?>
+            <span title="From <?= $h->ratio->min ?> to <?= $h->ratio->max ?>">
+                <?= $h->ratio->avg ?>
             </span>
         </td>
     </tr>
