@@ -19,6 +19,11 @@ class Spider
     protected $baseUrl;
     
     /**
+     * @var string Root URL of the catalog
+     */
+    protected $rootUrl;
+
+    /**
      * @var string Path for data files
      */
     protected $path;
@@ -28,6 +33,12 @@ class Spider
     {
         $this->baseUrl = $baseUrl;
         $this->client = new Client($this->baseUrl);
+        $parts = parse_url($this->baseUrl);
+        $this->rootUrl = sprintf(
+            '%s://%s',
+            $parts['scheme'],
+            $parts['host']
+        );
         $this->path = $path;
     }
 
@@ -116,7 +127,7 @@ class Spider
 
                 $titleUrlNodes = $xpath->query('.//div[@class="title-box"]/h3/a', $li);
                 $hdd->title = trim($titleUrlNodes->item(0)->nodeValue);
-                $hdd->url = $this->baseUrl . $titleUrlNodes->item(0)->attributes->getNamedItem("href")->nodeValue;
+                $hdd->url = $this->rootUrl . $titleUrlNodes->item(0)->attributes->getNamedItem("href")->nodeValue;
 
                 $priceNodes = $xpath->query('.//div[@class="price"]/span', $li);
                 if (!$priceNodes->length) {
