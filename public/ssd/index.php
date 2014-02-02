@@ -19,11 +19,19 @@ function loadData($filename)
 
 function drawTable($hdd)
 {
+    if (isset($_GET['id'])) {
+        $id = intval($_GET['id']);
+        if (isset($hdd[$id])) {
+            var_dump($hdd[$id]);
+            return;
+        }
+    }
     echo '<table class="table table-condensed table-striped">';
-    echo '<thead><tr><th>Title</th><th>Interface</th><th>Capacity (GB)</th><th>Avg Price</th><th>Avg K</th></tr></thead>';
+    echo '<thead><tr><th>#</th><th>Title</th><th>Interface</th><th>Capacity (GB)</th><th>Avg Price</th><th>Avg K</th></tr></thead>';
     echo '<tbody>';
-    foreach ($hdd as $h): ?>
+    foreach ($hdd as $id => $h): ?>
     <tr>
+        <td><a href="?id=<?= $id ?>"><?= $id ?></a></td>
         <td><a href="<?= $h->url ?>"><?= $h->title ?></a></td>
         <td><?= $h->interface ?></td>
         <td><?= $h->capacity ?></td>
