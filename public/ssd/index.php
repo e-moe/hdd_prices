@@ -77,7 +77,7 @@ function drawTable($hdd)
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-align-left"></span> Storage comparator</a>
+                        <a class="navbar-brand" href="/" data-instant><span class="glyphicon glyphicon-align-left"></span> Storage comparator</a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
@@ -98,5 +98,7 @@ function drawTable($hdd)
         </div>
         <script src="/js/jquery.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/instantclick.min.js" data-no-instant></script>
+        <script data-no-instant>InstantClick.init();</script>
     </body>
 </html>
