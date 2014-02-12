@@ -2,7 +2,7 @@
 namespace PriceParser;
 
 use Guzzle\Http\Client;
-use Guzzle\Http\Response;
+use Guzzle\Http\Message\Response;
 use Guzzle\Http\Request;
 use Guzzle\Common\Exception\MultiTransferException;
 
@@ -97,6 +97,17 @@ class Spider
     }
     
     /**
+     * Extract data from response
+     * 
+     * @return stdClass Data
+     */
+    protected function extractData(Response $response)
+    {
+        $html = $response->getBody();
+        return $this->parsePage($html);
+    }
+
+    /**
      * Parse responses
      * 
      * @param Response[] $responses
@@ -106,11 +117,32 @@ class Spider
     {
         $hdd = [];
         foreach ($responses as $response) {
-            $html = $response->getBody();
-            $data = $this->parsePage($html);
+            $data = $this->extractData($response);
             $hdd = array_merge($hdd, $data->items);
         }
         return $hdd;
+    }
+    
+    /**
+     * Save data into file
+     * 
+     * @param mixed $data
+     */
+    protected function saveData($data)
+    {
+        $fileName = $this->dataPath . time() . '.json';
+        $latestName = $this->dataPath . 'latest.json';
+        file_put_contents(
+            $fileName,
+            json_encode(
+                $data,
+                JSON_UNESCAPED_UNICODE
+            )
+        );
+        if (file_exists($latestName)) {
+            unlink($latestName);
+        }
+        symlink($fileName, $latestName);
     }
 
     /**
@@ -123,8 +155,7 @@ class Spider
             echo 'Can\'t load first page';
             return;
         }
-        $html = $pageOne->getBody();
-        $data = $this->parsePage($html);
+        $data = $this->extractData($pageOne);
         $hdd = $data->items;
 
         $requests = $this->getPageRequest(range(1, $data->pages - 1));
@@ -135,19 +166,7 @@ class Spider
             usort($hdd, function($a, $b) {
                 return strcmp($a->title, $b->title);
             });
-            $fileName = $this->dataPath . time() . '.json';
-            $latestName = $this->dataPath . 'latest.json';
-            file_put_contents(
-                $fileName,
-                json_encode(
-                    $hdd,
-                    JSON_UNESCAPED_UNICODE
-                )
-            );
-            if (file_exists($latestName)) {
-                unlink($latestName);
-            }
-            symlink($fileName, $latestName);
+            $this->saveData($hdd);
             echo 'Done', PHP_EOL;
         } catch (MultiTransferException $e) {
 
