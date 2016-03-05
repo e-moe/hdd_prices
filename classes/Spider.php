@@ -103,7 +103,7 @@ class Spider
      */
     protected function extractData(Response $response)
     {
-        $html = $response->getBody();
+        $html = $response->getBody(true);
         return $this->parsePage($html);
     }
 

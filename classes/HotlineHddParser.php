@@ -3,7 +3,7 @@ namespace PriceParser;
 
 class HotlineHddParser extends HotlineParser
 {
-    const URL_PATH = '/computer/zhestkie-diski';
+    const URL_PATH = '/computer/zhestkie-diski/';
 
     public function __construct()
     {
@@ -46,10 +46,10 @@ class HotlineHddParser extends HotlineParser
             $hdd = new \stdClass();
             $hdd->type = trim($techCharArr[0]);
             $hdd->capacity = intval($techCharArr[1]);
-            $hdd->interface = trim($techCharArr[2]);
-            $hdd->formFactor = trim($techCharArr[3]);
+            $hdd->interface = trim($techCharArr[3]);
+            $hdd->formFactor = trim($techCharArr[2]);
 
-            $titleUrlNodes = $xpath->query('.//div[@class="title-box"]/h3/a', $li);
+            $titleUrlNodes = $xpath->query('.//div[@class="title-box"]/div/a', $li);
             $hdd->title = trim($titleUrlNodes->item(0)->nodeValue);
             $hdd->url = self::HOST_URL . $titleUrlNodes->item(0)->attributes->getNamedItem("href")->nodeValue;
 
