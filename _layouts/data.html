@@ -8,7 +8,7 @@ layout: default
   </header>
 
   <div class="post-content">
-    <table class="data-table">
+    <table class="data-table" data-paging="false" data-info="false" data-sort="[[ 3, &quot;asc&quot; ]]">
         <thead>
             <th>Title</th>
             <th>Interface</th>
@@ -19,15 +19,19 @@ layout: default
         <tbody>
             {% for item in site.data[page.data] %}
               <tr>
-                <td>{{ item.title }}</td>
-                <td>{{ item.interface }}</td>
-                <td>{{ item.capacity }}</td>
                 <td>
+                    <a href="{{ item.url }}" target="_blank">
+                        {{ item.title }}
+                    </a>
+                </td>
+                <td>{{ item.interface }}</td>
+                <td data-order="{{ item.capacity }}">{{ item.capacity }}</td>
+                <td data-order="{{ item.price.avg }}">
                     <span title="From {{ item.price.min }} to {{ item.price.max }}">
                         {{ item.price.avg }}
                     </span>
                 </td>
-                <td>
+                <td data-order="{{ item.ratio.avg }}">
                     <span title="From {{ item.ratio.min }} to {{ item.ratio.max }}">
                         {{ item.ratio.avg }}
                     </span>

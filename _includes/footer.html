@@ -34,10 +34,6 @@
 <script type="text/javascript" src="{{ "/DataTables/datatables.min.js" | prepend: site.baseurl }}"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-  $('.data-table').DataTable({
-    "paging":   false,
-    "info":     false,
-    "order": [[ 4, "asc" ]]
-  });
+  $('.data-table').DataTable();
 } );
 </script>
