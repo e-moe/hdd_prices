@@ -1,57 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Storage comparator</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-        <div class="container">
-            <!-- Static navbar -->
-            <div class="navbar navbar-default" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/" data-instant><span class="glyphicon glyphicon-align-left"></span> Storage comparator</a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/hdd/">HDD</a></li>
-                            <li><a href="/ssd/">SSD</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="http://github.com/e-moe/hdd_prices/"><span class="glyphicon glyphicon-file"></span> Github</a></li>
-                            <li><a href="http://www.labinskiy.org.ua/"><span class="glyphicon glyphicon-user"></span> Author</a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                </div><!--/.container-fluid -->
-            </div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Storage comparator</title>
+    <link rel="stylesheet" href="css/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bulma/bulma.min.css">
+</head>
+<body>
+<section class="hero is-fullheight">
+    <!-- Hero header: will stick at the top -->
+    <div class="hero-header">
+        <header class="header">
+            <div class="container">
+                <!-- Left side -->
+                <div class="header-left">
+                    <span class="header-item">
+                        <a class="button is-primary is-inverted" href="/">
+                            <span class="icon">
+                                <i class="fa fa-home"></i>
+                            </span>
+                            <strong>Storage comparator</strong>
+                        </a>
+                    </span>
+                    <a class="header-item" href="/hdd">
+                        HDD
+                    </a>
+                    <a class="header-item" href="/ssd">
+                        SSD
+                    </a>
+                </div>
 
-            <!-- Main component for a primary marketing message or call to action -->
-            <div class="jumbotron">
-                <h1>Choose the Best</h1>
-                <p>Find most suitable storage drives for you based on <code>Price/Capacity</code> ratio.</p>
+                <!-- Hamburger menu (on mobile) -->
+                <span class="header-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+
+                <!-- Right side -->
+                <div class="header-right header-menu">
+                    <span class="header-item">
+                        <a class="button is-primary is-inverted" href="https://github.com/e-moe/hdd_prices">
+                            <span class="icon">
+                                <i class="fa fa-github"></i>
+                            </span>
+                            GitHub
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-content">
+        <div class="container">
+            <h1 class="title">
+                Choose the Best
+            </h1>
+            <h2 class="subtitle">
+                Find most suitable storage drives for you based on <code>Price/Capacity</code> ratio.
+            </h2>
+
+            <div class="columns">
+                <div class="column">
+                    <div class="message">
+                        <div class="message-header">
+                            Hard disk drive
+                        </div>
+                        <div class="message-body">
+                            <p>
+                                A hard disk drive (HDD), hard disk, hard drive or fixed disk is a data storage device used for storing
+                                and retrieving digital information using one or more rigid ("hard") rapidly rotating disks (platters)
+                                coated with magnetic material.
+                            </p>
+                            <p class="is-text-right">
+                                <a class="button" href="/hdd">
+                                    Show me HDD
+                                    <span class="icon">
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="message">
+                        <div class="message-header">
+                            Solid-state drive
+                        </div>
+                        <div class="message-body">
+                            <p>
+                                A solid-state drive (SSD, also known as a solid-state disk although it contains neither an actual disk
+                                nor a drive motor to spin a disk) is a solid-state storage device that uses integrated circuit assemblies
+                                as memory to store data persistently.
+                            </p>
+                            <p class="is-text-right">
+                                <a class="button" href="/ssd">
+                                    Show me SSD
+                                    <span class="icon">
+                                        <i class="fa fa-angle-double-right"></i>
+                                    </span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero footer: will stick at the bottom -->
+    <div class="hero-footer">
+        <div class="container">
+            <div class="content is-text-centered">
                 <p>
-                    <a class="btn btn-lg btn-primary" href="/hdd/" role="button">Show me HDD &raquo;</a>
-                    <a class="btn btn-lg btn-primary" href="/ssd/" role="button">Show me SSD &raquo;</a>
+                    <strong>Storage comparator</strong> by <a href="//labinskiy.org.ua">Nikolay Labinskiy</a>.
+                    The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+                    The website content is licensed <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
                 </p>
             </div>
-
-        </div> <!-- /container -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/instantclick.min.js" data-no-instant></script>
-        <script data-no-instant>InstantClick.init();</script>
-    </body>
+        </div>
+    </div>
+</section>
+</body>
 </html>
