@@ -19,12 +19,6 @@
             {% include icon-github.html username=site.github_username %}
           </li>
           {% endif %}
-
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
         </ul>
       </div>
 
@@ -36,3 +30,14 @@
   </div>
 
 </footer>
+
+<script type="text/javascript" src="{{ "/DataTables/datatables.min.js" | prepend: site.baseurl }}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.data-table').DataTable({
+    "paging":   false,
+    "info":     false,
+    "order": [[ 4, "asc" ]]
+  });
+} );
+</script>
