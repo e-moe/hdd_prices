@@ -1,9 +1,0 @@
-/* TEAM */
-Developer: Nikolay Labinskiy aka e-moe
-Contact: e-moe@ukr.net
-Location: Donetsk, Ukraine
-
-/* SITE */
-Last update: 2014/02/02
-Standards: HTML5, CSS3
-Components: jQuery, Twitter Bootstrap.

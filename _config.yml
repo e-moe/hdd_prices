@@ -1,0 +1,12 @@
+# Site settings
+title: Storage comparator
+email: e-moe@ukr.net
+description: > # this means to ignore newlines until "baseurl:"
+  Choose the Best: Find most suitable storage drives for you based on Price/Capacity ratio.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: jekyllrb
+github_username:  e-moe
+
+# Build settings
+markdown: kramdown
