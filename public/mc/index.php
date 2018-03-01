@@ -58,7 +58,7 @@ function drawTable($hdd)
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SSD Prices - Storage comparator</title>
+        <title>MC Prices - Storage comparator</title>
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -82,8 +82,8 @@ function drawTable($hdd)
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li><a href="/hdd/">HDD</a></li>
-                            <li class="active"><a href="/ssd/">SSD</a></li>
-                            <li><a href="/mc/">MC</a></li>
+                            <li><a href="/ssd/">SSD</a></li>
+                            <li class="active"><a href="/mc/">MC</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="http://github.com/e-moe/hdd_prices/"><span class="glyphicon glyphicon-file"></span> Github</a></li>
@@ -93,10 +93,11 @@ function drawTable($hdd)
                 </div><!--/.container-fluid -->
             </div>
             <div class="page-header">
-                <h1>SSD prices <small>based on hotline.ua data</small></h1>
+                <h1>HDD prices <small>based on hotline.ua data</small></h1>
             </div>
-            <?php drawTable(loadData('../../data/ssd/latest.json')); ?>
+            <?php drawTable(loadData('../../data/mc/latest.json')); ?>
         </div>
+
         <script src="/js/jquery.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/instantclick.min.js" data-no-instant></script>

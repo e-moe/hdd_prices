@@ -118,7 +118,9 @@ class Spider
         $hdd = [];
         foreach ($responses as $response) {
             $data = $this->extractData($response);
-            $hdd = array_merge($hdd, $data->items);
+            if (isset($data->items)) {
+                $hdd = array_merge($hdd, $data->items);
+            }
         }
         return $hdd;
     }

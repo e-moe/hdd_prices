@@ -3,9 +3,9 @@ namespace PriceParser;
 
 use Symfony\Component\DomCrawler\Crawler;
 
-class HotlineHddParser extends HotlineParser
+class HotlineMcParser extends HotlineParser
 {
-    const URL_PATH = '/computer/zhestkie-diski/';
+    const URL_PATH = '/computer/flash-karty/';
 
     public function __construct()
     {
@@ -35,9 +35,6 @@ class HotlineHddParser extends HotlineParser
             return false;
         }
 
-        if (!$liNodes->count()) {
-            return false;
-        }
         $liNodes->each(function (Crawler $node) {
             try {
                 $techCharText = $node->filter('div.info-description div.text')->first()->text();
@@ -45,8 +42,8 @@ class HotlineHddParser extends HotlineParser
                 $hdd = new \stdClass();
                 $hdd->type = trim($techCharArr[0]);
                 $hdd->capacity = intval($techCharArr[2]);
-                $hdd->interface = trim($techCharArr[4]);
-                $hdd->formFactor = trim($techCharArr[3]);
+                $hdd->interface = trim($techCharArr[1]);
+                $hdd->inTheBox = trim($techCharArr[3]);
 
                 $titleUrl = $node->filter('div.info-description p.h4 a')->first();
                 $hdd->title = trim($titleUrl->text());
